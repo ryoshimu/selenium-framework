@@ -11,7 +11,7 @@ def load_config():
 
 def run():
     config = load_config()
-    driver = webdriver.Chrome(ChromeDriverManager().install())
+    driver = webdriver.Chrome()
 
     try:
         driver.get(config['url'])
