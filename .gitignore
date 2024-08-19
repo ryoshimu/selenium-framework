@@ -1,0 +1,6 @@
+.venv
+logs/*
+pages/__pycache__/*
+tests/__pycache__/*
+selenium/*
+__pycache__/

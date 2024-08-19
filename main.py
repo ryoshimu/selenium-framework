@@ -1,11 +1,24 @@
+import os
 import sys
 import logging
 import tests.test_login as test_login
 import tests.test_logout as test_logout
 
-
+d
 # ログの設定
-logging.basicConfig(filename='test_log.log', level=logging.ERROR,
+# ログの出力先フォルダを指定
+log_directory = 'logs'
+log_file = 'test_log.log'
+log_path = os.path.join(log_directory, log_file)
+
+# フォルダが存在しない場合は作成
+if not os.path.exists(log_directory):
+    os.makedirs(log_directory)
+
+logging.basicConfig(
+                    level=logging.ERROR,
+                    filename=log_path,
+                    filemode='a',
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 def run_test(test_name):
