@@ -1,22 +1,17 @@
 import logging
-from selenium import webdriver
 from pages.login_page import LoginPage
-import yaml
+from config.config import *
+from auth import Auth
 
-def load_config():
-    with open('config/config.yaml') as config_file:
-        config = yaml.safe_load(config_file)
-    return config
-
-def run():
-    config = load_config()
-    driver = webdriver.Chrome()
-
+def run(driver):
+    # driver = webdriver.Chrome()
     try:
-        driver.get(config['url'])
+        driver.get(LOGIN['url'])
+        auth = Auth(driver)
+        auth.save_cookies()
         login_page = LoginPage(driver)
-        login_page.login(config['username'], config['password'])
-
+        # login_page.login(config['username'], config['password'])
+        print("Running test_login...222222")
         if "Dashboard" in driver.title:
             print("Login successful!")
         else:
@@ -28,6 +23,3 @@ def run():
 
     finally:
         driver.quit()
-
-if __name__ == "__main__":
-    run()
