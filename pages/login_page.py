@@ -9,7 +9,7 @@ class LoginPage:
         self.username_input = (By.ID, 'username')
         self.password_input = (By.ID, 'password')
         self.input = (By.ID, 'APjFqb')
-        self.login_button = (By.ID, 'login')
+        self.login_button = (By.NAME, 'btnK')
         self.form()
 
     def enter_username(self, username):
@@ -19,8 +19,8 @@ class LoginPage:
         self.driver.find_element(*self.password_input).send_keys(password)
 
     def form(self):
-        print("入力")
         self.driver.find_element(*self.input).send_keys('aaaaa')
+        self.driver.find_element(*self.login_button).click()
         time.sleep(1)
 
     def click_login(self):
